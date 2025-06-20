@@ -168,10 +168,7 @@ The site uses Netlify Forms to handle form submissions. No additional setup is r
 Project: 1st Class Grass Subscription App
 
 Contact Information
-• Name: Abdur-Rahman Bilal
-• Phone: +1 404 548 8241
 • Email: firstclassgrass.nc@gmail.com
-• Cash App: $arambilal
 
 ⸻
 
