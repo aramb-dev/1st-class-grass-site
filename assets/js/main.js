@@ -11,6 +11,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Address field data
+  const streetData = {
+    'Harlowe Point': [
+      'Spoonbill Trail',
+      'Red Wing Drive',
+      'Cape May Lane',
+      'Sora Way',
+      'Rosefinch Drive',
+      'Bunting Way',
+      'Winter Wren Lane'
+    ],
+    'Pagehurst': [
+      'Honey Suckle Lane',
+      'Sagar Court',
+      'Page Ford Drive',
+      'Sameer Court',
+      'Muscadine Court',
+      'Galax Lane'
+    ]
+  };
+
+  // Setup address fields
+  setupAddressFields();
+
   // Form validation
   const contactForm = document.getElementById('contact-form');
 
@@ -20,6 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const nameInput = document.getElementById('name');
       const emailInput = document.getElementById('email');
       const messageInput = document.getElementById('message');
+      const streetNumberInput = document.getElementById('street-number');
+      const neighborhoodInput = document.getElementById('neighborhood');
+      const streetNameInput = document.getElementById('street-name');
+      const addressInput = document.getElementById('address');
 
       let isValid = true;
 
@@ -45,10 +73,99 @@ document.addEventListener('DOMContentLoaded', () => {
         removeError(messageInput);
       }
 
+      // Street number validation
+      if (streetNumberInput && streetNumberInput.value.trim() === '') {
+        isValid = false;
+        showError(streetNumberInput, 'Please enter your street number');
+      } else if (streetNumberInput && !/^\d+$/.test(streetNumberInput.value.trim())) {
+        isValid = false;
+        showError(streetNumberInput, 'Please enter a valid numeric street number');
+      } else if (streetNumberInput) {
+        removeError(streetNumberInput);
+      }
+
+      // Neighborhood validation
+      if (neighborhoodInput && neighborhoodInput.value === '') {
+        isValid = false;
+        showError(neighborhoodInput, 'Please select your neighborhood');
+      } else if (neighborhoodInput) {
+        removeError(neighborhoodInput);
+      }
+
+      // Street name validation
+      if (streetNameInput && streetNameInput.value === '') {
+        isValid = false;
+        showError(streetNameInput, 'Please select your street');
+      } else if (streetNameInput) {
+        removeError(streetNameInput);
+      }
+
+      // Concatenate address before submission
+      if (isValid && streetNumberInput && streetNameInput && neighborhoodInput) {
+        const fullAddress = `${streetNumberInput.value} ${streetNameInput.value}, Durham, NC 27703`;
+        addressInput.value = fullAddress;
+      }
+
       if (!isValid) {
         e.preventDefault();
       }
     });
+  }
+
+  // Setup address fields functionality
+  function setupAddressFields() {
+    const neighborhoodSelect = document.getElementById('neighborhood');
+    const streetNameSelect = document.getElementById('street-name');
+    const streetNumberInput = document.getElementById('street-number');
+
+    if (neighborhoodSelect && streetNameSelect) {
+      // When neighborhood changes, update street options
+      neighborhoodSelect.addEventListener('change', () => {
+        const selectedNeighborhood = neighborhoodSelect.value;
+
+        // Clear current options
+        streetNameSelect.innerHTML = '<option value="">Select Street</option>';
+
+        // Disable street select if no neighborhood is selected
+        if (selectedNeighborhood === '') {
+          streetNameSelect.disabled = true;
+          return;
+        }
+
+        // Enable street select and populate options
+        streetNameSelect.disabled = false;
+
+        // Add new options based on selected neighborhood
+        const streets = streetData[selectedNeighborhood] || [];
+        streets.forEach(street => {
+          const option = document.createElement('option');
+          option.value = street;
+          option.textContent = street;
+          streetNameSelect.appendChild(option);
+        });
+      });
+
+      // Real-time address concatenation for preview (optional)
+      [neighborhoodSelect, streetNameSelect, streetNumberInput].forEach(input => {
+        if (input) {
+          input.addEventListener('change', updateAddressPreview);
+          if (input === streetNumberInput) {
+            input.addEventListener('input', updateAddressPreview);
+          }
+        }
+      });
+    }
+  }
+
+  // Update address preview (optional)
+  function updateAddressPreview() {
+    const streetNumber = document.getElementById('street-number')?.value || '';
+    const streetName = document.getElementById('street-name')?.value || '';
+
+    if (streetNumber && streetName) {
+      const fullAddress = `${streetNumber} ${streetName}, Durham, NC 27703`;
+      document.getElementById('address').value = fullAddress;
+    }
   }
 
   // Testimonials
