@@ -1,4 +1,4 @@
-// First Class Grass - Main JavaScript
+// 1st Class Grass - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle

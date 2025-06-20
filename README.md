@@ -1,10 +1,10 @@
-# First Class Grass - Landing Page
+# 1st Class Grass - Landing Page
 
-This repository contains the landing page for First Class Grass, a professional lawn service company operating in the Harlowe Point and Pagehurst neighborhoods of Durham, NC.
+This repository contains the landing page for 1st Class Grass, a professional lawn service company operating in the Harlowe Point and Pagehurst neighborhoods of Durham, NC.
 
 ## Project Overview
 
-First Class Grass provides bi-weekly mowing services with the following pricing tiers:
+1st Class Grass provides bi-weekly mowing services with the following pricing tiers:
 
 - Basic Mowing: $30/month
 - Mowing + Trimming: $35/month (Main Service)
@@ -161,11 +161,11 @@ The site uses Netlify Forms to handle form submissions. No additional setup is r
 
 ## Original Spec Sheet
 
-First Class Grass - App Quick Spec Sheet
+1st Class Grass - App Quick Spec Sheet
 
 ⸻
 
-Project: First Class Grass Subscription App
+Project: 1st Class Grass Subscription App
 
 Contact Information
 • Name: Abdur-Rahman Bilal

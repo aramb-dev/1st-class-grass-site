@@ -1,7 +1,7 @@
 {
   "name": "first-class-grass-site",
   "version": "1.0.0",
-  "description": "Landing page for First Class Grass lawn service",
+  "description": "Landing page for 1st Class Grass lawn service",
   "main": "index.html",
   "scripts": {
     "build:css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/style.css",
@@ -16,7 +16,7 @@
     "mowing",
     "landscaping"
   ],
-  "author": "First Class Grass",
+  "author": "1st Class Grass",
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.3.3"
