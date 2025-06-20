@@ -2,7 +2,7 @@
   "testimonials": [
     {
       "id": "t001",
-      "name": "John Smith",
+      "name": "-",
       "location": "Harlowe Point",
       "service": "Mowing + Trimming",
       "date": "2025-05-15",
@@ -13,7 +13,7 @@
     },
     {
       "id": "t002",
-      "name": "Jane Doe",
+      "name": "-",
       "location": "Pagehurst",
       "service": "Mowing Only",
       "date": "2025-04-22",
@@ -24,7 +24,7 @@
     },
     {
       "id": "t003",
-      "name": "Robert Johnson",
+      "name": "-",
       "location": "Harlowe Point",
       "service": "Trimming Only",
       "date": "2025-05-02",
@@ -35,7 +35,7 @@
     },
     {
       "id": "t004",
-      "name": "Sarah Williams",
+      "name": "-",
       "location": "Pagehurst",
       "service": "Mowing + Trimming",
       "date": "2025-03-18",
@@ -46,7 +46,7 @@
     },
     {
       "id": "t005",
-      "name": "Michael Brown",
+      "name": "-",
       "location": "Harlowe Point",
       "service": "Mowing Only",
       "date": "2025-04-05",
@@ -57,7 +57,7 @@
     },
     {
       "id": "t006",
-      "name": "Emily Davis",
+      "name": "-",
       "location": "Pagehurst",
       "service": "Mowing + Trimming",
       "date": "2025-05-10",
