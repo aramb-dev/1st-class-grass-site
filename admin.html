@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - First Class Grass</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .admin-panel {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: white;
+        }
+
+        .testimonial-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-danger {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+
+        .btn-secondary {
+            background-color: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4b5563;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container flex items-center justify-between py-4">
+            <a href="index.html" class="flex items-center space-x-2">
+                <span class="text-grass-dark font-display text-2xl font-bold">First Class Grass</span>
+            </a>
+
+            <div>
+                <a href="index.html" class="text-gray-700 hover:text-grass-green font-medium">Back to Website</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-panel">
+        <!-- Login Form (Initially Visible) -->
+        <div id="login-section" class="login-form">
+            <h1 class="text-3xl font-bold mb-6 text-center">Admin Login</h1>
+            <form id="login-form" class="bg-white p-6 rounded-lg shadow-md">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Login</button>
+            </form>
+        </div>
+
+        <!-- Admin Dashboard (Initially Hidden) -->
+        <div id="admin-dashboard" class="hidden">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold">Testimonial Management</h1>
+                <button id="add-testimonial-btn" class="btn btn-primary">Add New Testimonial</button>
+            </div>
+
+            <!-- Testimonial Form (Initially Hidden) -->
+            <div id="testimonial-form-container" class="hidden bg-white p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-2xl font-bold mb-4" id="form-title">Add New Testimonial</h2>
+                <form id="testimonial-form">
+                    <input type="hidden" id="testimonial-id">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="form-group">
+                            <label for="name">Customer Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <select id="location" name="location" required>
+                                <option value="">Select Location</option>
+                                <option value="Harlowe Point">Harlowe Point</option>
+                                <option value="Pagehurst">Pagehurst</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select Service</option>
+                                <option value="Trimming Only">Trimming Only</option>
+                                <option value="Mowing Only">Mowing Only</option>
+                                <option value="Mowing + Trimming">Mowing + Trimming</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group md:col-span-2">
+                            <label for="text">Testimonial Text</label>
+                            <textarea id="text" name="text" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating (1-5)</label>
+                            <select id="rating" name="rating" required>
+                                <option value="">Select Rating</option>
+                                <option value="1">1 Star</option>
+                                <option value="2">2 Stars</option>
+                                <option value="3">3 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="5">5 Stars</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sentiment">Sentiment</label>
+                            <select id="sentiment" name="sentiment" required>
+                                <option value="">Select Sentiment</option>
+                                <option value="positive">Positive</option>
+                                <option value="neutral">Neutral</option>
+                                <option value="negative">Negative</option>
+                            </select>
+                        </div>
+                        <div class="form-group checkbox-group md:col-span-2">
+                            <input type="checkbox" id="featured" name="featured">
+                            <label for="featured">Featured Testimonial</label>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-4 mt-4">
+                        <button type="button" id="cancel-form" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Testimonial</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Testimonials List -->
+            <div id="testimonials-list" class="space-y-4">
+                <!-- Testimonials will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple authentication (for demo purposes only)
+            const loginForm = document.getElementById('login-form');
+            const loginSection = document.getElementById('login-section');
+            const adminDashboard = document.getElementById('admin-dashboard');
+
+            // Demo credentials (in a real app, this would be server-side)
+            const DEMO_USERNAME = 'admin';
+            const DEMO_PASSWORD = 'grassadmin';
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username === DEMO_USERNAME && password === DEMO_PASSWORD) {
+                    loginSection.classList.add('hidden');
+                    adminDashboard.classList.remove('hidden');
+                    loadTestimonials();
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            });
+
+            // Testimonial form handling
+            const addTestimonialBtn = document.getElementById('add-testimonial-btn');
+            const testimonialFormContainer = document.getElementById('testimonial-form-container');
+            const testimonialForm = document.getElementById('testimonial-form');
+            const cancelFormBtn = document.getElementById('cancel-form');
+            const formTitle = document.getElementById('form-title');
+
+            addTestimonialBtn.addEventListener('click', () => {
+                formTitle.textContent = 'Add New Testimonial';
+                testimonialForm.reset();
+                document.getElementById('testimonial-id').value = '';
+                testimonialFormContainer.classList.remove('hidden');
+            });
+
+            cancelFormBtn.addEventListener('click', () => {
+                testimonialFormContainer.classList.add('hidden');
+            });
+
+            testimonialForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const testimonialId = document.getElementById('testimonial-id').value || `t${Date.now().toString().slice(-3)}`;
+                const name = document.getElementById('name').value;
+                const location = document.getElementById('location').value;
+                const service = document.getElementById('service').value;
+                const date = document.getElementById('date').value;
+                const text = document.getElementById('text').value;
+                const rating = parseInt(document.getElementById('rating').value);
+                const sentiment = document.getElementById('sentiment').value;
+                const featured = document.getElementById('featured').checked;
+
+                // In a real app, this would be an API call
+                fetch('/data/testimonials.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        let testimonials = data.testimonials;
+                        const existingIndex = testimonials.findIndex(t => t.id === testimonialId);
+
+                        const newTestimonial = {
+                            id: testimonialId,
+                            name,
+                            location,
+                            service,
+                            date,
+                            text,
+                            rating,
+                            sentiment,
+                            featured
+                        };
+
+                        if (existingIndex >= 0) {
+                            // Update existing
+                            testimonials[existingIndex] = newTestimonial;
+                        } else {
+                            // Add new
+                            testimonials.push(newTestimonial);
+                        }
+
+                        // In a real app, this would save to the server
+                        // For demo, we'll just update the UI
+                        alert('Testimonial saved successfully! (Note: In this demo, changes are not permanently saved to the server)');
+                        testimonialFormContainer.classList.add('hidden');
+                        renderTestimonials(testimonials);
+                    })
+                    .catch(error => {
+                        console.error('Error saving testimonial:', error);
+                        alert('Error saving testimonial. Please try again.');
+                    });
+            });
+
+            // Load and render testimonials
+            function loadTestimonials() {
+                fetch('/data/testimonials.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        renderTestimonials(data.testimonials);
+                    })
+                    .catch(error => {
+                        console.error('Error loading testimonials:', error);
+                        document.getElementById('testimonials-list').innerHTML = '<p class="text-red-500">Error loading testimonials. Please try again later.</p>';
+                    });
+            }
+
+            function renderTestimonials(testimonials) {
+                const testimonialsList = document.getElementById('testimonials-list');
+                testimonialsList.innerHTML = '';
+
+                testimonials.forEach(testimonial => {
+                    const testimonialElement = document.createElement('div');
+                    testimonialElement.className = 'testimonial-item';
+                    testimonialElement.innerHTML = `
+                        <div class="flex justify-between">
+                            <h3 class="text-xl font-bold">${testimonial.name}</h3>
+                            <div>
+                                ${generateStars(testimonial.rating)}
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-600 mb-2">
+                            <span>${testimonial.location} | ${testimonial.service}</span>
+                            <span>${formatDate(testimonial.date)}</span>
+                        </div>
+                        <p class="mb-2">"${testimonial.text}"</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-gray-100 text-sm rounded-full">${testimonial.sentiment}</span>
+                            ${testimonial.featured ? '<span class="px-2 py-1 bg-grass-green text-white text-sm rounded-full">Featured</span>' : ''}
+                        </div>
+                        <div class="testimonial-actions">
+                            <button class="btn btn-sm btn-secondary edit-btn" data-id="${testimonial.id}">Edit</button>
+                            <button class="btn btn-sm btn-danger delete-btn" data-id="${testimonial.id}">Delete</button>
+                        </div>
+                    `;
+
+                    testimonialsList.appendChild(testimonialElement);
+                });
+
+                // Add event listeners to edit and delete buttons
+                document.querySelectorAll('.edit-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        editTestimonial(id, testimonials);
+                    });
+                });
+
+                document.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        deleteTestimonial(id, testimonials);
+                    });
+                });
+            }
+
+            function editTestimonial(id, testimonials) {
+                const testimonial = testimonials.find(t => t.id === id);
+                if (!testimonial) return;
+
+                document.getElementById('testimonial-id').value = testimonial.id;
+                document.getElementById('name').value = testimonial.name;
+                document.getElementById('location').value = testimonial.location;
+                document.getElementById('service').value = testimonial.service;
+                document.getElementById('date').value = testimonial.date;
+                document.getElementById('text').value = testimonial.text;
+                document.getElementById('rating').value = testimonial.rating;
+                document.getElementById('sentiment').value = testimonial.sentiment;
+                document.getElementById('featured').checked = testimonial.featured;
+
+                formTitle.textContent = 'Edit Testimonial';
+                testimonialFormContainer.classList.remove('hidden');
+            }
+
+            function deleteTestimonial(id, testimonials) {
+                if (confirm('Are you sure you want to delete this testimonial?')) {
+                    // In a real app, this would be an API call
+                    const updatedTestimonials = testimonials.filter(t => t.id !== id);
+
+                    // For demo, we'll just update the UI
+                    alert('Testimonial deleted successfully! (Note: In this demo, changes are not permanently saved to the server)');
+                    renderTestimonials(updatedTestimonials);
+                }
+            }
+
+            // Helper functions
+            function generateStars(rating) {
+                // Fixed star rendering with proper styling
+                const fullStar = '<span class="text-yellow-400 inline-block">★</span>';
+                const emptyStar = '<span class="text-gray-300 inline-block">★</span>';
+
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    stars += i <= rating ? fullStar : emptyStar;
+                }
+
+                return stars;
+            }
+
+            function formatDate(dateString) {
+                const options = { year: 'numeric', month: 'short', day: 'numeric' };
+                return new Date(dateString).toLocaleDateString(undefined, options);
+            }
+        });
+    </script>
+</body>
+
+</html>

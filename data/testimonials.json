@@ -1,0 +1,70 @@
+{
+  "testimonials": [
+    {
+      "id": "t001",
+      "name": "John Smith",
+      "location": "Harlowe Point",
+      "service": "Mowing + Trimming",
+      "date": "2025-05-15",
+      "text": "Coming Soon - Customer testimonials will be available after our service launch.",
+      "rating": 5,
+      "sentiment": "positive",
+      "featured": true
+    },
+    {
+      "id": "t002",
+      "name": "Jane Doe",
+      "location": "Pagehurst",
+      "service": "Mowing Only",
+      "date": "2025-04-22",
+      "text": "Coming Soon - Customer testimonials will be available after our service launch.",
+      "rating": 4,
+      "sentiment": "positive",
+      "featured": false
+    },
+    {
+      "id": "t003",
+      "name": "Robert Johnson",
+      "location": "Harlowe Point",
+      "service": "Trimming Only",
+      "date": "2025-05-02",
+      "text": "Coming Soon - Customer testimonials will be available after our service launch.",
+      "rating": 5,
+      "sentiment": "positive",
+      "featured": false
+    },
+    {
+      "id": "t004",
+      "name": "Sarah Williams",
+      "location": "Pagehurst",
+      "service": "Mowing + Trimming",
+      "date": "2025-03-18",
+      "text": "Coming Soon - Customer testimonials will be available after our service launch.",
+      "rating": 5,
+      "sentiment": "positive",
+      "featured": true
+    },
+    {
+      "id": "t005",
+      "name": "Michael Brown",
+      "location": "Harlowe Point",
+      "service": "Mowing Only",
+      "date": "2025-04-05",
+      "text": "Coming Soon - Customer testimonials will be available after our service launch.",
+      "rating": 3,
+      "sentiment": "neutral",
+      "featured": false
+    },
+    {
+      "id": "t006",
+      "name": "Emily Davis",
+      "location": "Pagehurst",
+      "service": "Mowing + Trimming",
+      "date": "2025-05-10",
+      "text": "Coming Soon - Customer testimonials will be available after our service launch.",
+      "rating": 5,
+      "sentiment": "positive",
+      "featured": true
+    }
+  ]
+}
