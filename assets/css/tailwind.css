@@ -11,6 +11,13 @@
     @apply font-sans text-gray-800;
   }
 
+  /* Ensure input fields have dark text for better visibility */
+  input,
+  select,
+  textarea {
+    @apply text-gray-800;
+  }
+
   h1,
   h2,
   h3,
