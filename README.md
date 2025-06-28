@@ -1,260 +1,221 @@
-# 1st Class Grass - Landing Page
+# Modern Next.js Website
 
-This repository contains the landing page for 1st Class Grass, a professional lawn service company operating in the Harlowe Point and Pagehurst neighborhoods of Durham, NC.
+A modern, responsive website built with Next.js 14, TypeScript, Tailwind CSS v4, and shadcn/ui components.
 
-## Project Overview
+## 🚀 Features
 
-1st Class Grass provides bi-weekly mowing services with the following pricing tiers:
+- **Next.js 14** with App Router
+- **TypeScript** for type safety
+- **Tailwind CSS v4** for styling
+- **shadcn/ui** components
+- **Responsive design** with mobile-first approach
+- **SEO optimized** with proper meta tags
+- **Accessibility** compliant (WCAG)
+- **Error boundaries** and error handling
+- **Loading states** and animations
+- **Form validation** with Zod
+- **Contact form** with API route
+- **Modern UI/UX** with smooth animations
 
-- Basic Mowing: $30/month
-- Mowing + Trimming: $35/month (Main Service)
-- Premium Package (includes Precise Edge Trimming): $45/month
+## 📦 Tech Stack
 
-## Tech Stack
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **UI Components**: shadcn/ui
+- **Form Handling**: React Hook Form + Zod
+- **Icons**: Lucide React
+- **Deployment**: Vercel (recommended)
 
-- HTML5
-- Tailwind CSS
-- Vanilla JavaScript
-- Netlify Forms for form handling
+## 🛠️ Installation
 
-## Project Structure
-
-```
-first-class-grass-site/
-├── index.html                  # Main landing page
-├── assets/                     # Static assets
-│   ├── images/                 # Image files
-│   │   ├── favicon.ico
-│   │   └── hero-bg.jpg
-│   ├── css/                    # CSS files
-│   │   ├── tailwind.css        # Tailwind CSS source
-│   │   └── style.css           # Compiled CSS
-│   └── js/                     # JavaScript files
-│       └── main.js             # Main JavaScript file
-├── tailwind.config.js          # Tailwind configuration
-├── package.json                # Project dependencies
-├── netlify.toml                # Netlify configuration
-└── README.md                   # Project documentation
-```
-
-## Development
-
-To set up the project for development:
-
-1. Clone the repository
-2. Install dependencies:
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd modern-nextjs-website
    ```
+
+2. **Install dependencies**
+   ```bash
    npm install
    ```
-3. Build the CSS:
-   ```
-   npm run build:css
-   ```
-4. For development with live CSS updates:
-   ```
+
+3. **Run the development server**
+   ```bash
    npm run dev
    ```
 
-## Deployment Checklist
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-Before deploying to Netlify, ensure you've completed the following steps:
+## 📁 Project Structure
 
-1. **Pre-deployment Verification**
+```
+src/
+├── app/                    # App Router pages
+│   ├── about/             # About page
+│   ├── contact/           # Contact page
+│   ├── services/          # Services page
+│   ├── api/               # API routes
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Home page
+│   ├── loading.tsx        # Loading UI
+│   ├── error.tsx          # Error UI
+│   └── not-found.tsx      # 404 page
+├── components/            # Reusable components
+│   ├── ui/                # shadcn/ui components
+│   ├── layout/            # Layout components
+│   ├── sections/          # Page sections
+│   ├── forms/             # Form components
+│   └── common/            # Common components
+├── lib/                   # Utility functions
+├── types/                 # TypeScript type definitions
+└── utils/                 # Helper utilities
+```
 
-   - [x] Run `npm run build` to generate the production CSS
-   - [ ] Test the website locally to ensure all sections display correctly
-   - [ ] Verify all links are working properly
-   - [ ] Check mobile responsiveness at different viewport sizes
-   - [ ] Ensure all images are optimized and loading correctly
-   - [ ] Validate HTML for any errors
-   - [ ] Check for console errors in the browser developer tools
+## 🎨 Customization
 
-2. **Netlify Forms Verification**
+### Colors and Theming
 
-   - [ ] Confirm all forms have the `data-netlify="true"` attribute
-   - [ ] Verify hidden input fields with `name="form-name"` are present
-   - [ ] Test form validation functionality
-   - [ ] Ensure required fields are properly marked
+The project uses CSS variables for theming. You can customize colors in `src/app/globals.css`:
 
-3. **Deployment Steps**
+```css
+:root {
+  --primary: 221.2 83.2% 53.3%;
+  --secondary: 210 40% 96%;
+  /* ... other variables */
+}
+```
 
-   **Option 1: Deploy using the Netlify CLI**
+### Components
 
-   ```
-   # Install Netlify CLI if you don't have it
-   npm install -g netlify-cli
+All UI components are built with shadcn/ui and can be customized in the `src/components/ui/` directory.
 
-   # Login to your Netlify account
-   netlify login
+### Adding New Pages
 
-   # Initialize a new Netlify site
-   netlify init
+1. Create a new directory in `src/app/`
+2. Add a `page.tsx` file
+3. Export a default React component
+4. Add metadata for SEO
 
-   # Deploy the site
-   netlify deploy --prod
-   ```
+Example:
+```tsx
+import type { Metadata } from 'next';
 
-   **Option 2: Deploy using the Netlify web interface**
+export const metadata: Metadata = {
+  title: 'New Page',
+  description: 'Description of the new page',
+};
 
-   - Go to [app.netlify.com](https://app.netlify.com/)
-   - Click "Add new site" > "Import an existing project"
-   - Connect to your Git provider (GitHub, GitLab, etc.)
-   - Select the repository
-   - Configure build settings:
-     - Build command: `npm run build`
-     - Publish directory: `.` (root directory)
-   - Click "Deploy site"
+export default function NewPage() {
+  return (
+    <div>
+      <h1>New Page</h1>
+    </div>
+  );
+}
+```
 
-4. **Post-deployment Tasks**
-   - [ ] Verify the deployed site works correctly
-   - [ ] Test form submissions on the live site
-   - [ ] Check site performance using Netlify analytics
-   - [ ] Set up custom domain (if available)
+## 🔧 Configuration
 
-## Custom Domain Setup
+### Environment Variables
 
-To connect a custom domain to your Netlify site:
+Create a `.env.local` file for environment variables:
 
-1. Go to your Netlify site dashboard
-2. Navigate to "Domain settings" or "Domain management"
-3. Click "Add custom domain"
-4. Enter your domain name and follow the verification steps
-5. Update your domain's DNS settings:
-   - Option 1: Use Netlify DNS (recommended)
-     - Update your domain's nameservers to Netlify's nameservers
-   - Option 2: Add CNAME/A records at your current DNS provider
-     - Add a CNAME record pointing to your Netlify site URL
-     - Or add A records pointing to Netlify's load balancer IPs
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+CONTACT_EMAIL=hello@yoursite.com
+```
 
-## Managing Form Submissions
+### Tailwind Configuration
 
-To access and manage form submissions:
+Customize Tailwind in `tailwind.config.js`:
 
-1. Log in to your Netlify account
-2. Select your site from the dashboard
-3. Click on "Forms" in the left navigation menu
-4. You'll see a list of all forms on your site and their submissions
-5. Click on a form name to view all submissions
-6. You can:
-   - Export submissions as CSV
-   - Set up form notifications via email
-   - Connect to third-party services using webhooks
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        // Add custom colors
+      },
+      fontFamily: {
+        // Add custom fonts
+      },
+    },
+  },
+};
+```
 
-The site has two forms:
+## 📱 Responsive Design
 
-- Contact form (`name="contact"`)
-- App notification form (`name="app-notification"`)
+The website is built with a mobile-first approach:
 
-## Form Handling
+- **Mobile**: 320px - 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: 1024px+
 
-The site uses Netlify Forms to handle form submissions. No additional setup is required as the forms are configured with the `data-netlify="true"` attribute in the HTML.
+All components are responsive and adapt to different screen sizes.
 
-## Contact Information
+## ♿ Accessibility
 
-- Name: Abdur-Rahman Bilal
-- Phone: +1 404 548 8241
-- Email: firstclassgrass.nc@gmail.com
-- Cash App: $arambilal
-- Service Area: Harlowe Point & Pagehurst Neighborhoods, Durham, NC 27703
+The website follows WCAG guidelines:
 
----
+- Semantic HTML structure
+- Proper ARIA labels
+- Keyboard navigation support
+- Color contrast compliance
+- Screen reader compatibility
 
-## Original Spec Sheet
+## 🚀 Deployment
 
-1st Class Grass - App Quick Spec Sheet
+### Vercel (Recommended)
 
-⸻
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
 
-Project: 1st Class Grass Subscription App
+### Other Platforms
 
-Contact Information
-• Email: firstclassgrass.nc@gmail.com
+The project can be deployed to any platform that supports Next.js:
 
-⸻
+- Netlify
+- AWS Amplify
+- Railway
+- DigitalOcean App Platform
 
-Service Overview
-• Service Provided: Bi-weekly mowing and trimming (twice per month)
-• Subscription Price: $35/month
-• Add-On: Precise Edge Trimming – $10 (optional)
-• Area: Harlowe Point Neighborhood, Durham, NC 27703; Pagehurst Neighborhood, Durham, NC, 27703
-• Audience: Harlowe Point & Pagehurst residents only
+## 📊 Performance
 
-⸻
+The website is optimized for performance:
 
-Login and Authentication (Phase 2 – Planned)
+- **Core Web Vitals** optimized
+- **Image optimization** with Next.js Image component
+- **Code splitting** with dynamic imports
+- **Bundle analysis** available with `npm run analyze`
 
-Two Login Options: 1. Address + Email OTP:
-• User chooses their neighborhood (Harlowe Point or Pagehurst)
-• Enters house number
-• Selects street name from dropdown list
-• City (Durham) and Zip Code (27703) locked
-• Receives OTP to email for verification 2. Email + Password:
-• Traditional sign-up and login
-• Address still selected via number and dropdown
+## 🧪 Testing
 
-Important: Only pre-approved street names available in dropdown.
+Run type checking:
+```bash
+npm run type-check
+```
 
-⸻
+Run linting:
+```bash
+npm run lint
+```
 
-Dashboard Features (Phase 1 – Build First)
-• See "Next Mow Date"
-• Subscription Status (Active / Paused / Canceled)
-• Update Payment Method (Stripe via Billing.js)
-• Pause/Cancel Subscription
-• Notification Center (Service Updates, Delay Notices)
+## 📄 License
 
-⸻
+This project is licensed under the MIT License.
 
-Payment Integration
-• Platform: Stripe (via Billing.js)
-• Subscription: Auto-renew monthly unless canceled
-• Customer Options: Pause or Cancel via dashboard
-• Alternative Payment (temporary): Cash App: $arambilal
+## 🤝 Contributing
 
-⸻
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-Website Structure (Temporary Landing Site)
+## 📞 Support
 
-Page Details
-Home Service introduction, Pricing, "Book Now" CTA
-Feedback Simple form for user interest / early feedback
-Contact Basic contact info (email, phone)
-
-⸻
-
-Database Structure
-
-Table Fields
-Users ID, Name, Email, House Number, Street Name, Neighborhood, City, Zip, Status
-Subscriptions ID, User ID, Stripe Customer ID, Status, Plan, Start Date, Next Billing Date
-MowSchedules ID, User ID, Next Mow Date, Last Mow Date, Notes
-Notifications ID, User ID, Type (Reminder, Delay, Update), Message, Date Sent, Read Status
-
-⸻
-
-Notifications (Email)
-• Welcome Email
-• Subscription Confirmation
-• Monthly Payment Receipt
-• Mow Reminder (1 day before)
-• Delay Notification
-• Pause/Cancel Confirmation
-
-⸻
-
-Technical Notes
-• Frontend: HTML/CSS/JS or React
-• Backend: Node.js/Express
-• Database: Supabase, Firebase, or SQL
-• Hosting: Netlify, Vercel, or Render
-
-⸻
-
-Visual & UI Notes
-• Pricing tiers:
-• Mowing Only: $30/month
-• Mowing + Trimming: $35/month (Main Service)
-• Precise Edge Trimming: +$10
-• Mobile-first design
-• Easy-to-use dashboard and form layout
-• Email + Street Dropdown system for address targeting
+For support, email hello@modernsite.com or create an issue on GitHub.
